@@ -31,8 +31,8 @@ metricsEndpoints:
 {{ end }}
 
 jobs:
-  - name: cluster-density-v2
-    namespace: cluster-density-v2
+  - name: rds
+    namespace: rds
     jobIterations: {{.JOB_ITERATIONS}}
     qps: {{.QPS}}
     burst: {{.BURST}}
@@ -53,12 +53,6 @@ jobs:
       pod-security.kubernetes.io/audit: privileged
       pod-security.kubernetes.io/warn: privileged
     objects:
-
-      - objectTemplate: imagestream.yml
-        replicas: 1
-
-      - objectTemplate: build.yml
-        replicas: 1
 
       - objectTemplate: deployment-server.yml
         replicas: 3

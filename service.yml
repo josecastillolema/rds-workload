@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: cluster-density-{{.Replica}}
+  name: rds-{{.Replica}}
 spec:
   selector:
     app: nginx

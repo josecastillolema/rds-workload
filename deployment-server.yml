@@ -7,11 +7,11 @@ spec:
   replicas: {{.podReplicas}}
   selector:
     matchLabels:
-      name: cluster-density-{{.Replica}}
+      name: rds-{{.Replica}}
   template:
     metadata:
       labels:
-        name: cluster-density-{{.Replica}}
+        name: rds-{{.Replica}}
         app: nginx
     spec:
       topologySpreadConstraints:
@@ -63,7 +63,7 @@ spec:
           protocol: TCP
         - containerPort: 8443
           protocol: TCP
-        name: cluster-density
+        name: rds
         env:
         - name: ENVVAR1
           value: "{{randAlphaNum 250}}"

@@ -2,10 +2,10 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: cluster-density-{{.Replica}}
+  name: rds-{{.Replica}}
 spec:
   to:
     kind: Service
-    name: cluster-density-{{.Replica}}
+    name: rds-{{.Replica}}
   tls:
     termination: edge
