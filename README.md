@@ -1,10 +1,12 @@
 # rds-workload
 
-| Iterations (nodes) | 120   | 1   |
-| ------------------ | ----- | --- |
-| pods               | 6000  | 50  |
-| services           | 2400  | 20  |
-| endpoints          | 60000 | 500 |
-| deployments        | 3600  | 30  |
-| configmaps         | 3600  | 30  |
-| secrets            | 5040  | 42  |
+| Iterations / nodes / namespaces | 120   | 1   |
+| ------------------------------- | ----- | --- |
+| deployments                     | 3000  | 25  |
+| pods (2 x deployment)           | 6000  | 50  |
+| services                        | 2400  | 20  |
+| endpoints                       | 60000 | 500 |
+| configmaps                      | 3600  | 30  |
+| secrets                         | 5040  | 42  |
+| route                           | 240   | 2   |
+| networkPolicy                   | 360   | 3   |
