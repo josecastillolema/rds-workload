@@ -65,6 +65,11 @@ jobs:
           podReplicas: 2
           ingressDomain: {{.INGRESS_DOMAIN}}
 
+      - objectTemplate: deployment-dpdk.yml
+        replicas: 1
+        inputVars:
+          podReplicas: 1
+
       - objectTemplate: service.yml
         replicas: 20
 

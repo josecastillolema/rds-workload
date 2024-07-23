@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dpdk-{{.Replica}}
+  annotations:
+    # Disable CPU balance with CRIO
+    irq-load-balancing.crio.io: "disable"
+    cpu-load-balancing.crio.io: "disable"
+    cpu-quota.crio.io: "disable"
+  labels:
+    group: load
+    svc: dpdk-{{.Replica}}
+spec:
+  replicas: { { .podReplicas } }
+  selector:
+    matchLabels:
+      name: dpdk-{{.Replica}}
+  template:
+    metadata:
+      labels:
+        group: load
+        name: dpdk-{{.Replica}}
+    spec:
+      runtimeClassName: performance-openshift-node-performance-profile
+      containers:
+        - name: dpdk
+          image: quay.io/cloud-bulldozer/curl:latest
+          command: ["sleep", "inf"]
+          imagePullPolicy: Always
+          # Request and Limits must be identical for the Pod to be assigned to the QoS Guarantee
+          resources:
+            requests:
+              cpu: 32000m
+              memory: 1024M
+              hugepages-1Gi: 16Gi
+            limits:
+              cpu: 32000m
+              memory: 1024M
+              hugepages-1Gi: 16Gi
+          # securityContext:
+          #   privileged: true
+          volumeMounts:
+            - mountPath: /hugepages
+              name: hugepage
+      dnsPolicy: Default
+      terminationGracePeriodSeconds: 1
+      # Add not-ready/unreachable tolerations for 15 minutes so that node
+      # failure doesn't trigger pod deletion.
+      tolerations:
+        - key: "node.kubernetes.io/not-ready"
+          operator: "Exists"
+          effect: "NoExecute"
+          tolerationSeconds: 900
+        - key: "node.kubernetes.io/unreachable"
+          operator: "Exists"
+          effect: "NoExecute"
+          tolerationSeconds: 900
+      volumes:
+        - name: hugepage
+          emptyDir:
+            medium: HugePages
