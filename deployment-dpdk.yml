@@ -11,7 +11,7 @@ metadata:
     group: load
     svc: dpdk-{{.Replica}}
 spec:
-  replicas: {{.podReplicas}}
+  replicas: { { .podReplicas } }
   selector:
     matchLabels:
       name: dpdk-{{.Replica}}
@@ -38,7 +38,7 @@ spec:
               hugepages-1Gi: 16Gi
           env:
             - name: stress_cpu
-              value: "32"
+              value: "8"
             - name: stress_vm
               value: "1"
             - name: stress_vm-bytes
