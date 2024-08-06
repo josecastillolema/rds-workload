@@ -22,8 +22,8 @@ spec:
         name: dpdk-{{.Replica}}
       annotations:
         k8s.v1.cni.cncf.io/networks: '[
-          { "name": "sriov-net-{{ .Iteration }}-0" },
-          { "name": "sriov-net-{{ .Iteration }}-1" }
+          { "name": "sriov-net-{{ .Iteration }}-1" },
+          { "name": "sriov-net-{{ .Iteration }}-2" }
         ]'
     spec:
       runtimeClassName: performance-cpt-pao
