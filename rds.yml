@@ -54,6 +54,9 @@ jobs:
       pod-security.kubernetes.io/warn: privileged
     objects:
 
+      - objectTemplate: sriov-network.yml
+        replicas: 1
+
       - objectTemplate: deployment-server.yml
         replicas: 15
         inputVars:
