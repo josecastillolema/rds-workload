@@ -38,4 +38,4 @@
    - DPDK_PODS: Number of 4-core dpdk pods (should fill one NUMA node)
 
 I.e.: In this example NUMA node0 CPUs are even numbers:
-![](./img/mba-on.png)
+![](./img/dpdk_pods.png)
