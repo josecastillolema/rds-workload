@@ -35,7 +35,7 @@
 
  - Specific to the workload
    - INGRESS_DOMAIN: For E-W traffic
-   - DPDK_PODS: Number of 4-core dpdk pods (should fill one NUMA node)
+   - DPDK_PODS: Number of 4-core dpdk pods (should fill all the isolated cores of one NUMA node)
 
-I.e.: In this example NUMA node0 CPUs are even numbers:
-![](./img/dpdk_pods.png)
+     I.e.: In this example NUMA node0 CPUs are even numbers and cores 0 and 64 are reserved:
+     ![](./img/dpdk_pods.png)
