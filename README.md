@@ -1,5 +1,9 @@
 # rds-workload
 
+RDS core workload.
+
+## Object replicas
+
 | Iterations / nodes / namespaces               | 1   | 120   |
 | --------------------------------------------- | --- | ----- |
 | configmaps                                    | 30  | 3600  |
@@ -27,6 +31,9 @@ Each DPDK pod has:
  - 1 OVN interface
  - 2 SRIOV interfaces
 
+The ideia is that they consume an entire NUMA node. I.e.: In this example NUMA node0 CPUs are even numbers and cores 0 and 64 are reserved:
+     ![](./img/dpdk_pods.png)
+
 ## Input parameters
 
  - General
@@ -49,6 +56,3 @@ Each DPDK pod has:
  - Specific to the workload
    - INGRESS_DOMAIN: For E-W traffic
    - DPDK_PODS: Number of 4-core dpdk pods (should fill all the isolated cores of one NUMA node)
-
-     I.e.: In this example NUMA node0 CPUs are even numbers and cores 0 and 64 are reserved:
-     ![](./img/dpdk_pods.png)
