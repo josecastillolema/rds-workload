@@ -54,7 +54,28 @@ jobs:
       pod-security.kubernetes.io/warn: privileged
     objects:
 
+      - objectTemplate: secret.yml
+        replicas: 42
+
+      - objectTemplate: configmap.yml
+        replicas: 30
+
+      - objectTemplate: np-deny-all.yml
+        replicas: 1
+
+      - objectTemplate: np-allow-from-clients.yml
+        replicas: 1
+
+      - objectTemplate: np-allow-from-ingress.yml
+        replicas: 1
+
       - objectTemplate: sriov-network.yml
+        replicas: 2
+
+      - objectTemplate: service.yml
+        replicas: 20
+
+      - objectTemplate: route.yml
         replicas: 2
 
       - objectTemplate: deployment-server.yml
@@ -73,23 +94,3 @@ jobs:
         inputVars:
           podReplicas: 1
 
-      - objectTemplate: service.yml
-        replicas: 20
-
-      - objectTemplate: route.yml
-        replicas: 2
-
-      - objectTemplate: secret.yml
-        replicas: 42
-
-      - objectTemplate: configmap.yml
-        replicas: 30
-
-      - objectTemplate: np-deny-all.yml
-        replicas: 1
-
-      - objectTemplate: np-allow-from-clients.yml
-        replicas: 1
-
-      - objectTemplate: np-allow-from-ingress.yml
-        replicas: 1
