@@ -6,7 +6,12 @@ metadata:
 spec:
   ipam: |
     {
-      "type": "static"
+      "type": "static",
+      "addresses": [
+        {
+          "address": "10.1.54.0/24"
+        }
+      ]
     }
   spoofChk: "off"
   trust: "on"

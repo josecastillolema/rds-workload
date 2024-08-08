@@ -20,6 +20,17 @@ RDS core workload.
 | services                                      | 20  | 2400  |
 | secrets                                       | 42  | 5040  |
 
+
+## Design principles
+
+ - A workload that resembles Webscale in terms of number of resources and topology (pod to svc ratio, svc to endpoint, etc.)
+ - A mix of best effort and guaranteed QoS pods (dpdk pods) (one entire NUMA node for guaranted QoS dpdk pods)
+ - E-W data traffic in the form of liveness probes
+ - LB type services provided by MetalLB for ingress traffic, with 50% of the namespaces having services of type LoadBalancer (will also try to make this ratio configurable)
+ - Consolidate on a single workload more akin to cluster-density than to node-density, and leverage it both for control plane and worker node stressing if needed
+ - A canned workload that could be reused among QE and perf/scale testing, able to run in small scales (even a local ovn-k8s kind.sh cluster if needed for CI purposes) and adjustable in size, number of cores per dpdk pods, etc.
+ - Don't redo what multi-bench is doing, as we ideally have one tool for kernel networking performance measurment.
+
 ## DPDK pods
 
 DPDK QoS guaranteed pods are emulated using stress-ng consuming 100% CPU on each core.
