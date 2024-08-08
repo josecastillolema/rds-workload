@@ -47,22 +47,29 @@ The ideia is that they consume an entire NUMA node. I.e.: In this example NUMA n
 ## Input parameters
 
  - General
-   - BURST
-   - CHURN
-   - CHURN_CYCLES
-   - CHURN_DELAY
-   - CHURN_DELETION_STRATEGY
-   - CHURN_DURATION
-   - CHURN_PERCENT
-   - ES_SERVER
-   - GC_METRICS
-   - GC
-   - JOB_ITERATIONS
-   - LOCAL_INDEXING
-   - POD_READY_THRESHOLD
-   - QPS
-   - SVC_LATENCY
+
+| Parameter               | Description                                                         | Default value     |
+| ----------------------- | ------------------------------------------------------------------- | ----------------- |
+| BURST                   | Burst                                                               | 20                |
+| CHURN                   | Enable churning                                                     | true              |
+| CHURN_CYCLES            | Churn cycles to execute                                             | -                 |
+| CHURN_DELAY             | Time to wait between each churn                                     | 2m                |
+| CHURN_DELETION_STRATEGY | Churn deletion strategy to use                                      | default           |
+| CHURN_DURATION          | Churn duration                                                      | 30m               |
+| CHURN_PERCENT           | Percentage of job iterations that kube-burner will churn each round | 10                |
+| ES_SERVER               | Elastic Search endpoint                                             | -                 |
+| GC_METRICS              | Collect metrics during garbage collection                           | true              |
+| GC                      | Garbage collect created namespaces                                  | true              |
+| JOB_ITERATIONS          | Number of iterations                                                | Number of workers |
+| LOCAL_INDEXING          | Enable local indexing                                               | false             |
+| POD_READY_THRESHOLD     | Pod ready timeout threshold                                         | 30s               |
+| QPS                     | Queries per Second                                                  | 20                |
+| SVC_LATENCY             | Enable service latency measurement                                  | true              |
+
 
  - Specific to the workload
-   - INGRESS_DOMAIN: For E-W traffic
-   - DPDK_PODS: Number of 4-core dpdk pods (should fill all the isolated cores of one NUMA node)
+
+| Parameter      | Description                                                                      | Default value |
+| -------------- | -------------------------------------------------------------------------------- | ------------- |
+| INGRESS_DOMAIN | For E-W traffic                                                                  | -             |
+| DPDK_PODS      | Number of 4-core dpdk pods (should fill all the isolated cores of one NUMA node) | 15            |
