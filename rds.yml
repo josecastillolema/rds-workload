@@ -75,6 +75,15 @@ jobs:
       - objectTemplate: service.yml
         replicas: 20
 
+      - objectTemplate: ipaddresspool.yml
+        replicas: 1
+
+      - objectTemplate: bgpadvertisement.yml
+        replicas: 1
+
+      - objectTemplate: bgppeer.yml
+        replicas: 1
+
       - objectTemplate: route.yml
         replicas: 2
 
