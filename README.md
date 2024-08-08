@@ -14,39 +14,37 @@ RDS core workload.
 
 ## Object replicas
 
-| Iterations / nodes / namespaces               | 1   | 120   |
-| --------------------------------------------- | --- | ----- |
-| configmaps                                    | 30  | 3600  |
-| deployments_best_effort                       | 25  | 3000  |
-| deployments_dpdk (CTP lab / R760)             | 15  | 1800  |
-| deployments_dpdk (scalelab / FC640)           | 7   | 840   |
-| endpoints (25 x service)                      | 500 | 60000 |
-| networkPolicy                                 | 3   | 360   |
-| namespaces                                    | 1   | 120   |
-| pods_best_effort (2 x deployment)             | 50  | 6000  |
-| pods_dpdk (1 x deployment) (cpt LAB / R760)   | 15  | 1800  |
-| pods_dpdk (1 x deployment) (scalelab / FC640) | 7   | 840   |
-| route                                         | 2   | 240   |
-| services                                      | 20  | 2400  |
-| secrets                                       | 42  | 5040  |
+| Iterations / nodes / namespaces   | 1   | 120   |
+| --------------------------------- | --- | ----- |
+| configmaps                        | 30  | 3600  |
+| deployments_best_effort           | 25  | 3000  |
+| deployments_dpdk                  | 10  | 1200  |
+| endpoints (25 x service)          | 500 | 60000 |
+| networkPolicy                     | 3   | 360   |
+| namespaces                        | 1   | 120   |
+| pods_best_effort (2 x deployment) | 50  | 6000  |
+| pods_dpdk (1 x deployment)        | 10  | 1200  |
+| route                             | 2   | 240   |
+| services                          | 20  | 2400  |
+| secrets                           | 42  | 5040  |
 
 ## DPDK pods
 
 DPDK QoS guaranteed pods are emulated using stress-ng consuming 100% CPU on each core.
 
 Each DPDK pod has:
- - 4 cores
+ - (worker CPUs-4)/2 cores (enough to fill one NUMA node with 10 pods)
  - 1 GB memory
  - 1 GB hugepage
  - 1 OVN interface
  - 2 SRIOV interfaces
 
-The ideia is that they consume an entire NUMA node. I.e.: In this example NUMA node0 CPUs are even numbers and cores 0 and 64 are reserved:
+The ideia is that DPDK pods should consume an entire NUMA node. I.e.: In this example NUMA node0 CPUs are even numbers and cores 0 and 64 are reserved:
      ![](./img/dpdk_pods.png)
 
 ## Input parameters
 
- - General
+### General
 
 | Parameter               | Description                                                         | Default value     |
 | ----------------------- | ------------------------------------------------------------------- | ----------------- |
@@ -60,16 +58,17 @@ The ideia is that they consume an entire NUMA node. I.e.: In this example NUMA n
 | ES_SERVER               | Elastic Search endpoint                                             | -                 |
 | GC_METRICS              | Collect metrics during garbage collection                           | true              |
 | GC                      | Garbage collect created namespaces                                  | true              |
-| JOB_ITERATIONS          | Number of iterations                                                | Number of workers |
+| JOB_ITERATIONS          | Number of iterations                                                | number of workers |
 | LOCAL_INDEXING          | Enable local indexing                                               | false             |
 | POD_READY_THRESHOLD     | Pod ready timeout threshold                                         | 30s               |
 | QPS                     | Queries per Second                                                  | 20                |
 | SVC_LATENCY             | Enable service latency measurement                                  | true              |
 
 
- - Specific to the workload
+### Specific to the workload
 
-| Parameter      | Description                                                                      | Default value |
-| -------------- | -------------------------------------------------------------------------------- | ------------- |
-| INGRESS_DOMAIN | For E-W traffic                                                                  | -             |
-| DPDK_PODS      | Number of 4-core dpdk pods (should fill all the isolated cores of one NUMA node) | 15            |
+| Parameter      | Description                                                                      | Default value               |
+| -------------- | -------------------------------------------------------------------------------- | --------------------------- |
+| INGRESS_DOMAIN | For E-W traffic                                                                  | -                           |
+| DPDK_CORES     | Number of 4-core dpdk pods (should fill all the isolated cores of one NUMA node) | 6 for CPT lab / Dell R760   |
+|                |                                                                                  | 3 for Scalelab / Dell FC640 |

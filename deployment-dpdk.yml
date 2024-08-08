@@ -34,11 +34,11 @@ spec:
           # Request and Limits must be identical for the Pod to be assigned to the QoS Guarantee
           resources:
             requests:
-              cpu: 4
+              cpu: {{.dpdk_cores}}
               memory: 1024M
               hugepages-1Gi: 1Gi
             limits:
-              cpu: 4
+              cpu: {{.dpdk_cores}}
               memory: 1024M
               hugepages-1Gi: 1Gi
           env:
