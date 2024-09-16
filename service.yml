@@ -1,0 +1,113 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: rds-{{.Replica}}
+  annotations:
+    metallb.universe.tf/address-pool: address-pool
+spec:
+  selector:
+    app: nginx
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
+    - name: http1
+      protocol: TCP
+      port: 81
+      targetPort: 8081
+    - name: http2
+      protocol: TCP
+      port: 82
+      targetPort: 8082
+    - name: http3
+      protocol: TCP
+      port: 83
+      targetPort: 8083
+    - name: http4
+      protocol: TCP
+      port: 84
+      targetPort: 8084
+    - name: http5
+      protocol: TCP
+      port: 85
+      targetPort: 8085
+    - name: http6
+      protocol: TCP
+      port: 86
+      targetPort: 8086
+    - name: http7
+      protocol: TCP
+      port: 87
+      targetPort: 8087
+    - name: http8
+      protocol: TCP
+      port: 88
+      targetPort: 8088
+    - name: http9
+      protocol: TCP
+      port: 89
+      targetPort: 8089
+    - name: http10
+      protocol: TCP
+      port: 90
+      targetPort: 8090
+    - name: http11
+      protocol: TCP
+      port: 91
+      targetPort: 8091
+    - name: http12
+      protocol: TCP
+      port: 92
+      targetPort: 8092
+    - name: http13
+      protocol: TCP
+      port: 93
+      targetPort: 8093
+    - name: http14
+      protocol: TCP
+      port: 94
+      targetPort: 8094
+    - name: http15
+      protocol: TCP
+      port: 95
+      targetPort: 8095
+    - name: http16
+      protocol: TCP
+      port: 96
+      targetPort: 8096
+    - name: http17
+      protocol: TCP
+      port: 97
+      targetPort: 8097
+    - name: http18
+      protocol: TCP
+      port: 98
+      targetPort: 8098
+    - name: http19
+      protocol: TCP
+      port: 99
+      targetPort: 8099
+    - name: http20
+      protocol: TCP
+      port: 100
+      targetPort: 8100
+    - name: http21
+      protocol: TCP
+      port: 101
+      targetPort: 8101
+    - name: http22
+      protocol: TCP
+      port: 102
+      targetPort: 8102
+    - name: http23
+      protocol: TCP
+      port: 103
+      targetPort: 8103
+    - name: http24
+      protocol: TCP
+      port: 104
+      targetPort: 8104
+  #type: ClusterIP
+  type: LoadBalancer
