@@ -5,6 +5,7 @@ metadata:
   name: rds-{{.Replica}}
   annotations:
     metallb.universe.tf/address-pool: address-pool
+    kube-burner.io/service-latency: "false"
 spec:
   selector:
     app: nginx
