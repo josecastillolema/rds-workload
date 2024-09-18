@@ -21,6 +21,7 @@ RDS core workload.
 | deployments_best_effort           | 25  | 3000                                |
 | deployments_dpdk                  | 10  | 300 (assuming 30 worker-dpdk nodes) |
 | endpoints (25 x service)          | 500 | 60000                               |
+| endpoints lb (2 x service)        | 2   | 240                                 |
 | networkPolicy                     | 3   | 360                                 |
 | namespaces                        | 1   | 120                                 |
 | pods_best_effort (2 x deployment) | 50  | 6000                                |
