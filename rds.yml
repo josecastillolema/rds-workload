@@ -10,7 +10,7 @@ global:
           threshold: {{.POD_READY_THRESHOLD}}
 {{ if eq .SVC_LATENCY "true" }}
     - name: serviceLatency
-      svcTimeout: 10s
+      svcTimeout: 1m
 {{ end }}
 metricsEndpoints:
 {{ if .ES_SERVER }}

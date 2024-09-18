@@ -83,7 +83,7 @@ spec:
         - name: ROUTE_ENDPOINT
           value: "https://rds-{{randInt 1 2}}-rds-{{.Iteration}}.{{ .ingressDomain }}/256.html"
         - name: SERVICE_ENDPOINT
-          value: "http://rds-{{randInt 1 6}}/256.html"
+          value: "http://rds-{{randInt 1 22}}/256.html"
       volumes:
       - name: secret-1
         secret:
