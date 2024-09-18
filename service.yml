@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: rds-{{add .Replica 2}}
+  name: rds-{{add .Replica 1}}
 spec:
   selector:
     app: nginx
