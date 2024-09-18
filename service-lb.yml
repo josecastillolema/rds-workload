@@ -3,6 +3,8 @@ kind: Service
 apiVersion: v1
 metadata:
   name: rds-{{.Replica}}
+  annotations:
+    metallb.universe.tf/address-pool: address-pool
 spec:
   selector:
     app: nginx
@@ -107,4 +109,5 @@ spec:
       protocol: TCP
       port: 104
       targetPort: 8104
-  type: ClusterIP
+  #type: ClusterIP
+  type: LoadBalancer

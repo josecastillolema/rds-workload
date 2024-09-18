@@ -91,6 +91,9 @@ jobs:
       - objectTemplate: service.yml
         replicas: 20
 
+      - objectTemplate: service-lb.yml
+        replicas: 1
+
       - objectTemplate: route.yml
         replicas: 2
 

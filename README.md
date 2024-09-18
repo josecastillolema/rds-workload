@@ -27,6 +27,7 @@ RDS core workload.
 | pods_dpdk (1 x deployment)        | 10  | 300 (assuming 30 worker-dpdk nodes) |
 | route                             | 2   | 240                                 |
 | services                          | 20  | 2400                                |
+| services (lb)                     | 1   | 120                                 |
 | secrets                           | 42  | 5040                                |
 
 ## DPDK pods
