@@ -109,7 +109,7 @@ jobs:
           ingressDomain: {{.INGRESS_DOMAIN}}
 
       - objectTemplate: deployment-dpdk.yml
-        replicas: 10
+        replicas: 2
         inputVars:
           podReplicas: 1
           dpdk_cores: {{.DPDK_CORES}}
