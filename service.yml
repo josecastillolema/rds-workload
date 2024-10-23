@@ -6,6 +6,7 @@ metadata:
 spec:
   selector:
     app: nginx
+  type: ClusterIP
   ports:
     - name: http
       protocol: TCP
@@ -31,80 +32,3 @@ spec:
       protocol: TCP
       port: 85
       targetPort: 8080
-    - name: http6
-      protocol: TCP
-      port: 86
-      targetPort: 8080
-    - name: http7
-      protocol: TCP
-      port: 87
-      targetPort: 8080
-    - name: http8
-      protocol: TCP
-      port: 88
-      targetPort: 8080
-    - name: http9
-      protocol: TCP
-      port: 89
-      targetPort: 8080
-    - name: http10
-      protocol: TCP
-      port: 90
-      targetPort: 8080
-    - name: http11
-      protocol: TCP
-      port: 91
-      targetPort: 8080
-    - name: http12
-      protocol: TCP
-      port: 92
-      targetPort: 8080
-    - name: http13
-      protocol: TCP
-      port: 93
-      targetPort: 8080
-    - name: http14
-      protocol: TCP
-      port: 94
-      targetPort: 8080
-    - name: http15
-      protocol: TCP
-      port: 95
-      targetPort: 8080
-    - name: http16
-      protocol: TCP
-      port: 96
-      targetPort: 8080
-    - name: http17
-      protocol: TCP
-      port: 97
-      targetPort: 8080
-    - name: http18
-      protocol: TCP
-      port: 98
-      targetPort: 8080
-    - name: http19
-      protocol: TCP
-      port: 99
-      targetPort: 8080
-    - name: http20
-      protocol: TCP
-      port: 100
-      targetPort: 8080
-    - name: http21
-      protocol: TCP
-      port: 101
-      targetPort: 8080
-    - name: http22
-      protocol: TCP
-      port: 102
-      targetPort: 8080
-    - name: http23
-      protocol: TCP
-      port: 103
-      targetPort: 8080
-    - name: http24
-      protocol: TCP
-      port: 104
-      targetPort: 8080
-  type: ClusterIP
